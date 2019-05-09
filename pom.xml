@@ -50,4 +50,7 @@
         </plugins>
     </build>
 
+    <scm>
+        <developerConnection>scm:git:https://github.com/d3adspace/constrictor.git</developerConnection>
+    </scm>
 </project>
