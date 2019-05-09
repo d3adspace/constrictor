@@ -8,3 +8,23 @@ Robust and useful library when working with netty and similar frameworks. Contai
 | Master      | [![Build Status](https://travis-ci.org/d3adspace/constrictor.svg?branch=master)](https://travis-ci.org/d3adspace/constrictor) |
 | Development | [![Build Status](https://travis-ci.org/d3adspace/constrictor.svg?branch=dev)](https://travis-ci.org/d3adspace/constrictor)    |
 
+# Installation / Usage
+
+**Maven repositories**
+```xml
+<repositories>
+    <!-- Klauke Enterprises Releases -->
+    <repository>
+        <id>klauke-enterprises-maven-releases</id>
+        <name>Klauke Enterprises Maven Releases</name>
+        <url>https://repository.klauke-enterprises.com/repository/maven-releases/</url>
+    </repository>
+	
+    <!-- Klauke Enterprises Snapshots -->
+    <repository>
+        <id>klauke-enterprises-maven-snapshots</id>
+        <name>Klauke Enterprises Maven Snapshots</name>
+        <url>https://repository.klauke-enterprises.com/repository/maven-snapshots/</url>
+    </repository>
+</repositories>
+```
