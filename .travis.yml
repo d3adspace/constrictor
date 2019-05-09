@@ -20,3 +20,21 @@ notifications:
 ####################
 script:
   - mvn clean compile package install
+
+##################
+### Deployment ###
+##################
+deploy:
+  provider: script
+  script: mvn deploy --settings deploy/maven-settings.xml
+  on:
+    branch: master
+    tags: true
+
+###################
+### Environment ###
+###################
+env:
+  global:
+  - secure: QIzcKbBWrZV/9EvfilMu+99L6KRe6AWxmDeypcrk+ebWijmo9DPPJXZ1U/8dwBuMoLAMcvxvVXOaVMU9e6/mphiK8k6CvVFcEZPWgO4vFLoUUE2csU6sysi4qlPHQIFT4QKOpKQX1UDEX2O7NxHK8IJFAgTeGhrTxHsGgocZfDW9T+SSS7PrkqL/qWVfMr9yggRno8ittTDTAUqSfuOO8I5Kfd+pPziHi+w2t8HjYAQcEEp8dem0Mt6KNCMIZMTmJxtIZfaRIKx3D8LYiBKssz6C/316hLnnk5JNQ1/QZL1qdyHbcQY/ikJkKiYuYqHeQNUCrg26DbCZqNkbvnH8ejimhd7T8o/F+Hsl01pXO18B10nKoO//uqjRK09VHtXk85/IMGUJvsc+8Ui7/alLV27KN+H7CnmQN884LG6LuJAQv2kBhb3ikQ/efNvaCHOTRYtuiS4+dFi2z4WxfUtTIh/BWlQRYBbPNB6cSY0j50QZvgR4vb5plbpu4k0Nw8Zp3H/zwSixTH92I0XkdXPol86bYTYAe0yruJL2RyZGkoxDBz9kFTkVBqe9NDMKJFuuYoooNVssigb+ajlIop7fVowhFWTQiRKX4r1X+3wlCw5ggh9gh6joAiIdpE4rgNVTBp/j13N6yFfkrNRkUvd0IkRNmpVa5isiON1+7JHFiEs=
+  - secure: 07OWDZ6PFpZRjpxThbQYpeEet+2jt+TaFde2JyRNStK3CFyPT5oA62o2YTMZvwd6NTl5j9rtA6hW9G4rYZGzLQ8T7n4J4XQWIw0boPDAOJqJ41Ke+4V46mYV4mG5fxs4Pp8qNwcaLs8igD4Jzs8dfjHJjmSxL+anq5Aaq8p2JtDTOgc08oHSSE9Z3kMZbE80xMkDQyUkY9eK9jBMqPEk8XbDZDpOOUo5L5ojbiglyiv/5ZgXpMesc7QuCS/gHU11yvTiwniCe7X14NX6H4tswKjMPXs2EDHVwlP1tjZfNhKKQE5XTQ7v80yn9In9QU1bdJwVM/HqCtiKZ17KA3MYUyEMtXvpoT99Q0UZoWrDItJA4gTE9onAP6YQDETCFikYKiKluglt/IyVRcuZSVDy17aUjOeIYVjdRbNzLBTlBYOyaAD8A0i+H4BS7yxz1bY47bOli1FgqVTV4LNokQeb+djry6WJrQ9k1lD/E8YhOgbK4OjukPdstW/4TScLC1IOQHLVi+VNHA+h4qsKIMrottfvmFk8E+cuRvtEcPIYS6mKlccI4oqVRn6zEP+ZauTAYyVWHzusYJ4LarOYBVtFdteun4g4Q9AShf+blfdpiFg9nRuUbNY/bKYD39ISP23Pa+3YdyBLdj31rIRwlMSDS2KOxtOa0i47fjgiPQSqXLw=
