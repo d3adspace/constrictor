@@ -1,10 +1,21 @@
 package de.d3adspace.constrictor.netty;
 
 import de.d3adspace.constrictor.core.thread.NamedThreadFactory;
+import io.netty.channel.Channel;
 import io.netty.channel.EventLoopGroup;
+import io.netty.channel.ServerChannel;
 import io.netty.channel.epoll.Epoll;
+import io.netty.channel.epoll.EpollDatagramChannel;
 import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.epoll.EpollServerSocketChannel;
+import io.netty.channel.epoll.EpollSocketChannel;
 import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.DatagramChannel;
+import io.netty.channel.socket.ServerSocketChannel;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioDatagramChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
 
 public class NettyUtils {
 
@@ -71,5 +82,32 @@ public class NettyUtils {
     public static EventLoopGroup createEventLoopGroup(int threadAmount, String threadNamePrefix) {
         NamedThreadFactory namedThreadFactory = new NamedThreadFactory(threadNamePrefix);
         return EPOLL_AVAILABLE ? new EpollEventLoopGroup(threadAmount, namedThreadFactory) : new NioEventLoopGroup(threadAmount, namedThreadFactory);
+    }
+
+    /**
+     * Get the appropriate socket channel class based on the fact if epoll is available.
+     *
+     * @return The class of the socket channel.
+     */
+    public static Class<? extends SocketChannel> getSocketChannel() {
+        return isEpollAvailable() ? EpollSocketChannel.class : NioSocketChannel.class;
+    }
+
+    /**
+     * Get the appropriate server socket channel class based on the fact if epoll is available.
+     *
+     * @return The class of the server socket channel.
+     */
+    public static Class<? extends ServerSocketChannel> getServerSocketChannel() {
+        return isEpollAvailable() ? EpollServerSocketChannel.class : NioServerSocketChannel.class;
+    }
+
+    /**
+     * Get the appropriate datagram channel class based on the fact if epoll is available.
+     *
+     * @return The class of the datagram socket channel.
+     */
+    public static Class<? extends DatagramChannel> getDatagramChannel() {
+        return isEpollAvailable() ? EpollDatagramChannel.class : NioDatagramChannel.class;
     }
 }
