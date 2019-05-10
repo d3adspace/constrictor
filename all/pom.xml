@@ -9,5 +9,52 @@
 
     <artifactId>constrictor-all</artifactId>
 
+    <dependencies>
 
+        <!-- Netty -->
+        <dependency>
+            <groupId>de.d3adspace.constrictor</groupId>
+            <artifactId>constrictor-netty</artifactId>
+            <version>2.2-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- TCP -->
+        <dependency>
+            <groupId>de.d3adspace.constrictor</groupId>
+            <artifactId>constrictor-tcp</artifactId>
+            <version>2.2-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- UDP -->
+        <dependency>
+            <groupId>de.d3adspace.constrictor</groupId>
+            <artifactId>constrictor-udp</artifactId>
+            <version>2.2-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Shade JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
