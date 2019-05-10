@@ -1,9 +1,8 @@
 package de.d3adspace.constrictor.netty;
 
+import com.google.common.base.Preconditions;
 import de.d3adspace.constrictor.core.thread.NamedThreadFactory;
-import io.netty.channel.Channel;
 import io.netty.channel.EventLoopGroup;
-import io.netty.channel.ServerChannel;
 import io.netty.channel.epoll.Epoll;
 import io.netty.channel.epoll.EpollDatagramChannel;
 import io.netty.channel.epoll.EpollEventLoopGroup;
@@ -80,6 +79,10 @@ public class NettyUtils {
      * @return The event look groups.
      */
     public static EventLoopGroup createEventLoopGroup(int threadAmount, String threadNamePrefix) {
+        Preconditions.checkArgument(threadAmount > 0, "You can't have zero or less threads.");
+        Preconditions.checkNotNull(threadNamePrefix, "Thread name prefix may not be null.");
+        Preconditions.checkArgument(!threadNamePrefix.isBlank(), "Thread name prefix may not be blank.");
+
         NamedThreadFactory namedThreadFactory = new NamedThreadFactory(threadNamePrefix);
         return EPOLL_AVAILABLE ? new EpollEventLoopGroup(threadAmount, namedThreadFactory) : new NioEventLoopGroup(threadAmount, namedThreadFactory);
     }

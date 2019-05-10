@@ -9,6 +9,14 @@
 
     <artifactId>constrictor-core</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.1-jre</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <!-- Shade JAR -->

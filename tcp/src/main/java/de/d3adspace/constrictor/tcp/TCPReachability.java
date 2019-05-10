@@ -1,5 +1,6 @@
 package de.d3adspace.constrictor.tcp;
 
+import com.google.common.base.Preconditions;
 import de.d3adspace.constrictor.core.thread.NamedThreadFactory;
 
 import java.io.IOException;
@@ -25,6 +26,9 @@ public class TCPReachability {
      * @return If the host is reachable at the given port.
      */
     public static boolean checkReachability(String host, int port) {
+        Preconditions.checkNotNull(host, "Host may not be null.");
+        Preconditions.checkArgument(!host.isBlank(), "Host may not be blank.");
+        Preconditions.checkArgument(0 <= port && port <= 65535, "Port has to in range ob 0 - 65535.");
 
         try (Socket socket = new Socket()) {
             socket.connect(new InetSocketAddress(host, port), DEFAULT_TIMEOUT);
