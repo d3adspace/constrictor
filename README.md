@@ -28,3 +28,49 @@ Robust and useful library when working with netty and similar frameworks. Contai
     </repository>
 </repositories>
 ```
+
+**Maven dependencies**
+
+_Combined all module:_
+```xml
+<!-- All -->
+<dependency>
+    <groupId>de.d3adspace.constrictor</groupId>
+    <artifactId>constrictor-netty</artifactId>
+    <version>2.2</version>
+    <scope>compile</scope>
+</dependency>
+```
+
+_Netty utils:_
+```xml
+<!-- Netty -->
+<dependency>
+    <groupId>de.d3adspace.constrictor</groupId>
+    <artifactId>constrictor-netty</artifactId>
+    <version>2.2</version>
+    <scope>compile</scope>
+</dependency>
+```
+
+_TCP utils:_
+```xml
+<!-- TCP -->
+<dependency>
+    <groupId>de.d3adspace.constrictor</groupId>
+    <artifactId>constrictor-tcp</artifactId>
+    <version>2.2</version>
+    <scope>compile</scope>
+</dependency>
+```
+
+_UDP utils:_
+```xml
+<!-- UDP -->
+<dependency>
+    <groupId>de.d3adspace.constrictor</groupId>
+    <artifactId>constrictor-udp</artifactId>
+    <version>2.2</version>
+    <scope>compile</scope>
+</dependency>
+```
